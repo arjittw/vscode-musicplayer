@@ -1,6 +1,6 @@
 {
 	"name": "musicplayer",
-	"displayName": "MusicPlayer",
+	"displayName": "Music Player",
 	"description": "A Music Player Inside VSCode",
 	"version": "0.0.1",
 	"engines": {
@@ -10,14 +10,31 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:musicplayer.searchYoutube"
+		"onCommand:musicplayer.searchYoutube",
+		"onView:musicplayer"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		
 		"commands": [
 			{
 				"command": "musicplayer.searchYoutube",
 				"title": "Search YouTube",
+				"category": "Music Player"
+			},
+			{
+				"command": "musicplayer.forward",
+				"title": "Forward 10 Seconds",
+				"category": "Music Player"
+			},
+			{
+				"command": "musicplayer.rewind",
+				"title": "Rewind 10 Seconds",
+				"category": "Music Player"
+			},
+			{
+				"command": "musicplayer.togglePause",
+				"title": "Toggle Pause",
 				"category": "Music Player"
 			}
 		]
@@ -51,6 +68,7 @@
 		"webpack-cli": "^4.10.0"
 	},
 	"dependencies": {
+		"node-json-db": "^1.6.0",
 		"node-mpv-km": "^2.0.2",
 		"youtube-search-without-api-key": "^1.0.7",
 		"ytdl-core": "^4.11.0"

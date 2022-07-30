@@ -1,8 +1,16 @@
 import * as vscode from 'vscode';
-import {searchYoutubePrompt} from './searchYoutube'
+import {searchYoutube} from './searchYoutube'
+import {player} from './player'
+import { controls } from './controls';
+import { initDb } from './storage';
 
 export function activate(context: vscode.ExtensionContext) {
-	searchYoutubePrompt(context)
+	initDb(context)
+	player.start()
+	searchYoutube(context)
+	controls(context)
 }
 
-export function deactivate() {}
+export async function deactivate() {
+	await player.quit()
+}
