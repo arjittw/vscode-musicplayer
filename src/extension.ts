@@ -1,14 +1,26 @@
 import * as vscode from 'vscode';
-import {searchYoutube} from './searchYoutube'
+import {searchMusic} from './commands/searchMusic'
 import {player} from './player'
-import { controls } from './controls';
-import { initDb } from './storage';
+import { controls } from './commands/controls';
+import { initDb } from './db';
+import { statusBar } from './statusBar';
+import { searchAndAddToPlaylist } from './commands/searchAndAddToPlaylist';
+import * as fs from "fs";
+import { playAPlaylist } from './commands/playAPlaylist';
 
-export function activate(context: vscode.ExtensionContext) {
-	initDb(context)
+export async function activate(context: vscode.ExtensionContext) {
 	player.start()
-	searchYoutube(context)
+
+	if (!fs.existsSync(context.globalStorageUri.fsPath)) {
+        fs.mkdirSync(context.globalStorageUri.fsPath);
+    }
+
+	initDb(context)
+	searchMusic(context)
+	searchAndAddToPlaylist(context)
+	playAPlaylist(context)
 	controls(context)
+	statusBar(context)
 }
 
 export async function deactivate() {

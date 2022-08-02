@@ -1,76 +1,115 @@
 {
-	"name": "musicplayer",
-	"displayName": "Music Player",
-	"description": "A Music Player Inside VSCode",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.69.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:musicplayer.searchYoutube",
-		"onView:musicplayer"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		
-		"commands": [
-			{
-				"command": "musicplayer.searchYoutube",
-				"title": "Search YouTube",
-				"category": "Music Player"
-			},
-			{
-				"command": "musicplayer.forward",
-				"title": "Forward 10 Seconds",
-				"category": "Music Player"
-			},
-			{
-				"command": "musicplayer.rewind",
-				"title": "Rewind 10 Seconds",
-				"category": "Music Player"
-			},
-			{
-				"command": "musicplayer.togglePause",
-				"title": "Toggle Pause",
-				"category": "Music Player"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run package",
-		"compile": "webpack",
-		"watch": "webpack --watch",
-		"package": "webpack --mode production --devtool hidden-source-map",
-		"compile-tests": "tsc -p . --outDir out",
-		"watch-tests": "tsc -p . -w --outDir out",
-		"pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.1",
-		"@types/node": "16.x",
-		"@types/vscode": "^1.69.0",
-		"@types/yt-search": "^2.3.2",
-		"@typescript-eslint/eslint-plugin": "^5.30.0",
-		"@typescript-eslint/parser": "^5.30.0",
-		"@vscode/test-electron": "^2.1.5",
-		"eslint": "^8.18.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.0.0",
-		"ts-loader": "^9.3.1",
-		"typescript": "^4.7.4",
-		"webpack": "^5.73.0",
-		"webpack-cli": "^4.10.0"
-	},
-	"dependencies": {
-		"node-json-db": "^1.6.0",
-		"node-mpv-km": "^2.0.2",
-		"youtube-search-without-api-key": "^1.0.7",
-		"ytdl-core": "^4.11.0"
-	}
+    "name": "musicplayer",
+    "displayName": "Music Player",
+    "description": "A Music Player Inside VSCode",
+    "publisher": "arjittw",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.69.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:musicplayer.searchMusic",
+        "onCommand:musicplayer.searchAndAddToPlaylist",
+        "onCommand:musicplayer.playAPlaylist",
+        "onView:playlists"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "musicplayer",
+                    "title": "Music Player",
+                    "icon": "media/headphone-fill.svg"
+                }
+            ]
+        },
+        "views": {
+            "musicplayer": [
+                {
+                    "id": "playlists",
+                    "name": "Playlists"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "musicplayer.searchMusic",
+                "title": "Search Music",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.seekForward",
+                "title": "Seek Forward 10 Seconds",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.seekBackword",
+                "title": "Seek Backword 10 Seconds",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.togglePause",
+                "title": "Toggle Pause",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.searchAndAddToPlaylist",
+                "title": "Search and Add to Playlist",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.playAPlaylist",
+                "title": "Play a Playlist",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.playNext",
+                "title": "Play Next Track",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.playPrevious",
+                "title": "Play Previous Track",
+                "category": "Music Player"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "yarn run package",
+        "compile": "webpack",
+        "watch": "webpack --watch",
+        "package": "webpack --mode production --devtool hidden-source-map",
+        "compile-tests": "tsc -p . --outDir out",
+        "watch-tests": "tsc -p . -w --outDir out",
+        "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.2.0",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.69.0",
+        "@types/yt-search": "^2.3.2",
+        "@typescript-eslint/eslint-plugin": "^5.30.0",
+        "@typescript-eslint/parser": "^5.30.0",
+        "@vscode/test-electron": "^2.1.5",
+        "eslint": "^8.18.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "ts-loader": "^9.3.1",
+        "typescript": "^4.7.4",
+        "webpack": "^5.73.0",
+        "webpack-cli": "^4.10.0"
+    },
+    "dependencies": {
+        "node-json-db": "^1.6.0",
+        "node-mpv-km": "^2.0.2",
+        "youtube-search-without-api-key": "^1.0.7",
+        "ytdl-core": "^4.11.0"
+    }
 }
