@@ -4,6 +4,7 @@
     "description": "A Music Player Inside VSCode",
     "publisher": "arjittw",
     "version": "0.0.1",
+    "icon": "media/icon.png",
     "engines": {
         "vscode": "^1.69.0"
     },
@@ -13,28 +14,10 @@
     "activationEvents": [
         "onCommand:musicplayer.searchMusic",
         "onCommand:musicplayer.searchAndAddToPlaylist",
-        "onCommand:musicplayer.playAPlaylist",
-        "onView:playlists"
+        "onCommand:musicplayer.playAPlaylist"
     ],
     "main": "./dist/extension.js",
     "contributes": {
-        "viewsContainers": {
-            "activitybar": [
-                {
-                    "id": "musicplayer",
-                    "title": "Music Player",
-                    "icon": "media/headphone-fill.svg"
-                }
-            ]
-        },
-        "views": {
-            "musicplayer": [
-                {
-                    "id": "playlists",
-                    "name": "Playlists"
-                }
-            ]
-        },
         "commands": [
             {
                 "command": "musicplayer.searchMusic",

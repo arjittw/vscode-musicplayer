@@ -46,6 +46,11 @@ export async function downloadAndPlayNext() {
     });
 }
 
-export function addToNext(number:number){
-    next += number;
+export function addToNextAndPlay(number:number){
+    if (playlist.length > next + number) {
+        next += number;
+        downloadAndPlayNext();
+    } else {
+        vscode.window.showWarningMessage("No more tracks in playlist");
+    }
 }
