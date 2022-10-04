@@ -1,7 +1,7 @@
 import { player } from '../player';
 import * as vscode from 'vscode';
 import { updateState } from '../statusBar';
-import { downloadAndPlayNext, addToNextAndPlay } from './playAPlaylist';
+import { addToNextAndPlay } from './playAPlaylist';
 
 export function controls(context: vscode.ExtensionContext) {
     let togglePause = vscode.commands.registerCommand(

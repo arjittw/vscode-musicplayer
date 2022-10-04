@@ -14,7 +14,6 @@ export async function statusBar(context: vscode.ExtensionContext) {
     );
     seekBackwordButton.command = 'musicplayer.seekBackword';
     seekBackwordButton.text = '$(chevron-left)';
-    context.subscriptions.push(seekBackwordButton);
 
     togglePauseButton = vscode.window.createStatusBarItem(
         vscode.StatusBarAlignment.Left,
@@ -22,7 +21,6 @@ export async function statusBar(context: vscode.ExtensionContext) {
     );
     togglePauseButton.command = 'musicplayer.togglePause';
     togglePauseButton.text = '';
-    context.subscriptions.push(togglePauseButton);
 
     seekForwardButton = vscode.window.createStatusBarItem(
         vscode.StatusBarAlignment.Left,
@@ -30,7 +28,28 @@ export async function statusBar(context: vscode.ExtensionContext) {
     );
     seekForwardButton.command = 'musicplayer.seekForward';
     seekForwardButton.text = '$(chevron-right)';
-    context.subscriptions.push(seekForwardButton);
+
+    playNextButton = vscode.window.createStatusBarItem(
+        vscode.StatusBarAlignment.Left,
+        185
+    );
+    playNextButton.command = 'musicplayer.playNext';
+    playNextButton.text = '$(triangle-right)';
+
+    playPreviousButton = vscode.window.createStatusBarItem(
+        vscode.StatusBarAlignment.Left,
+        185
+    );
+    playPreviousButton.command = 'musicplayer.playPrevious';
+    playPreviousButton.text = '$(triangle-left)';
+
+    context.subscriptions.push(
+        playPreviousButton,
+        seekBackwordButton,
+        togglePauseButton,
+        seekForwardButton,
+        playNextButton
+    );
 }
 
 export async function updateState() {
@@ -38,15 +57,19 @@ export async function updateState() {
 }
 
 export async function playingState() {
+    playPreviousButton.show()
     seekBackwordButton.show();
     togglePauseButton.show();
     seekForwardButton.show();
+    playNextButton.show()
 }
 
 export async function stoppedState() {
+    playPreviousButton.hide()
     seekBackwordButton.hide();
     togglePauseButton.hide();
     seekForwardButton.hide();
+    playNextButton.hide()
 }
 
 player.on('stopped', () => {

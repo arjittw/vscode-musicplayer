@@ -18,7 +18,7 @@ export function searchAndAddToPlaylist(context: vscode.ExtensionContext) {
 
                 if (!playlistName) return;
 
-                db.push(`/playlists/${playlistName}`,searchPick.data)
+                db.push(`/playlists/${playlistName}[]`,searchPick.data)
 
                 vscode.window.showInformationMessage(`Added "${searchPick.data.snippet.title}" to playlist "${playlistName}"`);
             }

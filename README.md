@@ -13,9 +13,14 @@ A full featured fast Music/Media player can play local files or from youtube
 sudo apt install mpv
 ```
 
-### On windows follow instructions on [official site](https://mpv.io/installation/) or you can install it with **chocolatey**
+### On windows follow instructions on [official site](https://mpv.io/installation/) or you can install it with **Chocolatey**
 ```
 choco install mpv
+```
+*OR*
+### **Scoop**
+```
+scoop install mpv
 ```
 
 ### On Mac OS

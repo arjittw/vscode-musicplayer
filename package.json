@@ -4,6 +4,10 @@
     "description": "A Music Player Inside VSCode",
     "publisher": "arjittw",
     "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/arjittw/musicplayer-vscode.git"
+      },
     "icon": "media/icon.png",
     "engines": {
         "vscode": "^1.69.0"
