@@ -6,7 +6,7 @@
     "version": "0.0.1",
     "repository": {
         "type": "git",
-        "url": "https://github.com/arjittw/musicplayer-vscode.git"
+        "url": "https://github.com/arjittw/vscode-musicplayer.git"
       },
     "icon": "media/icon.png",
     "engines": {
