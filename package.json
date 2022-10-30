@@ -1,13 +1,14 @@
 {
     "name": "musicplayer",
     "displayName": "Music Player",
-    "description": "A Music Player Inside VSCode",
+    "description": "The Full Featured Ad-Free Blazingly Fast Music/Media player and You'll never open a tab for music in browser",
     "publisher": "arjittw",
     "version": "0.0.1",
+    "license": "BSD-3-Clause",
     "repository": {
         "type": "git",
         "url": "https://github.com/arjittw/vscode-musicplayer.git"
-      },
+    },
     "icon": "media/icon.png",
     "engines": {
         "vscode": "^1.69.0"
