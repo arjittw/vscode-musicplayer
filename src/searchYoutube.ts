@@ -16,6 +16,6 @@ export async function searchYoutube(context: vscode.ExtensionContext) {
         await player.load(downloadPath);
         await player.play();
         playingState();
-        updateState();        
+        updateState();
     });
 }

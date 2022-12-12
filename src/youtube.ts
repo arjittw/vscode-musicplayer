@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-import * as yt from 'youtube-search-without-api-key';
+// import * as yt from 'youtube-search-without-api-key';
 import ytdl = require('ytdl-core');
+import * as ytsr from 'ytsr';
 
 export async function downloadTrack(url: string, path: string) {
     const track = ytdl(url, {
@@ -22,24 +23,28 @@ export async function getSearchResults() {
 
     if (!input) return;
 
-    const results = await yt.search(input);
-    return results;
+    const results = await ytsr(input, { limit: 10 });
+
+    return results as any;
 }
 
 export async function getSearchPick() {
     const results = await getSearchResults();
+
     if (!results) return;
 
     return await vscode.window.showQuickPick(
-        results.map(item => {
-            return {
-                label: item.title,
-                detail: `${item.snippet.duration} - ${item.snippet.publishedAt}`,
-                data: item,
-            };
-        }),
+        results.items
+            .filter((item: any) => item.type === 'video')
+            .map((item: any) => {
+                return {
+                    label: item.title,
+                    detail: `${item.duration} - ${item.author.name} - ${item.uploadedAt}`,
+                    data: item,
+                };
+            }),
         {}
-    );
+    ) as any;
 }
 
 export function getDownloadPath(context: vscode.ExtensionContext) {

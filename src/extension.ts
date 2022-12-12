@@ -13,7 +13,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	if (!fs.existsSync(context.globalStorageUri.fsPath)) {
         fs.mkdirSync(context.globalStorageUri.fsPath);
-    }
+    }	
 
 	initDb(context)
 	searchMusic(context)
