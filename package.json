@@ -3,7 +3,7 @@
     "displayName": "Music Player",
     "description": "The Full Featured Ad-Free Blazingly Fast Music/Media player and You'll never open a tab for music in browser",
     "publisher": "arjittw",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "BSD-3-Clause",
     "repository": {
         "type": "git",
@@ -67,13 +67,13 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "yarn run package",
+        "vscode:prepublish": "npm run package",
         "compile": "webpack",
         "watch": "webpack --watch",
         "package": "webpack --mode production --devtool hidden-source-map",
         "compile-tests": "tsc -p . --outDir out",
         "watch-tests": "tsc -p . -w --outDir out",
-        "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+        "pretest": "npm run compile-tests && npm run compile && npm run lint",
         "lint": "eslint src --ext ts",
         "test": "node ./out/test/runTest.js"
     },
