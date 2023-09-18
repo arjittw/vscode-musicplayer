@@ -1,7 +1,7 @@
 import { player } from '../player';
 import * as vscode from 'vscode';
 import { updateState } from '../statusBar';
-import { addToNextAndPlay } from './playAPlaylist';
+import { addLastToNextAndPlay, addToNextAndPlay } from './playAPlaylist';
 
 export function controls(context: vscode.ExtensionContext) {
     let togglePause = vscode.commands.registerCommand(
@@ -29,13 +29,13 @@ export function controls(context: vscode.ExtensionContext) {
     );
 
     let playNext = vscode.commands.registerCommand('musicplayer.playNext', async () => {
-        addToNextAndPlay(1);
+        addToNextAndPlay();
     });
 
     let playPrevious = vscode.commands.registerCommand(
         'musicplayer.playPrevious',
         async () => {
-            addToNextAndPlay(-1);
+            addLastToNextAndPlay();
         }
     );
 

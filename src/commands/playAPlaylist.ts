@@ -46,11 +46,22 @@ export async function downloadAndPlayNext() {
     });
 }
 
-export function addToNextAndPlay(number:number){    
+export function addToNextAndPlay(){
+    const number = 1;
     if (playlist.length > next + number) {
         next += number;
         downloadAndPlayNext();
     } else {
-        vscode.window.showWarningMessage("No more tracks in playlist");
+        vscode.window.showWarningMessage("No tracks next in playlist");
+    }
+}
+
+export function addLastToNextAndPlay(){
+    console.log(playlist.length, next)
+    if (next > 0) {
+        next -= 1;
+        downloadAndPlayNext();
+    } else {
+        vscode.window.showWarningMessage("No tracks beyond in playlist");
     }
 }
