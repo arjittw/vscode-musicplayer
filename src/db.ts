@@ -9,8 +9,9 @@ export function initDb(context: vscode.ExtensionContext) {
         new Config(
             vscode.Uri.joinPath(context.globalStorageUri, "db.json").fsPath,
             true,
-            false,
-            "/"
+            true,
+            "/",
+            false
         )
     );
 }

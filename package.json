@@ -19,7 +19,8 @@
     "activationEvents": [
         "onCommand:musicplayer.searchMusic",
         "onCommand:musicplayer.searchAndAddToPlaylist",
-        "onCommand:musicplayer.playAPlaylist"
+        "onCommand:musicplayer.playAPlaylist",
+        "onCommand:musicplayer.editPlaylist"
     ],
     "main": "./dist/extension.js",
     "contributes": {
@@ -62,6 +63,11 @@
             {
                 "command": "musicplayer.playPrevious",
                 "title": "Play Previous Track",
+                "category": "Music Player"
+            },
+            {
+                "command": "musicplayer.editPlaylist",
+                "title": "Edit Playlist",
                 "category": "Music Player"
             }
         ]

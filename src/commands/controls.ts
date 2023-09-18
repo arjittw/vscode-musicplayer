@@ -39,11 +39,19 @@ export function controls(context: vscode.ExtensionContext) {
         }
     );
 
+    let editPlaylist = vscode.commands.registerCommand(
+        'musicplayer.editPlaylist',
+        () => {
+            vscode.window.showTextDocument(vscode.Uri.joinPath(context.globalStorageUri, "db.json"));
+        }
+    );
+
     context.subscriptions.push(
         seekForward,
         seekBackword,
         togglePause,
         playNext,
-        playPrevious
+        playPrevious,
+        editPlaylist
     );
 }
