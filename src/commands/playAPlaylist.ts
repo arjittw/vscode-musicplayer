@@ -14,7 +14,7 @@ export function playAPlaylist(context: vscode.ExtensionContext) {
     let playAPlaylist = vscode.commands.registerCommand(
         'musicplayer.playAPlaylist',
         async () => {
-            const playlists = db.getData('/playlists/');
+            const playlists = await db.getData('/playlists/');
             next = 0;
             const pick = await vscode.window.showQuickPick(Object.keys(playlists), {});
             if (!pick) return;
