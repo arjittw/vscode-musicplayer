@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
-import {searchMusic} from './commands/searchMusic'
-import {player} from './player'
+import { searchMusic } from './commands/searchMusic'
+import { player } from './player'
 import { controls } from './commands/controls';
 import { initDb } from './db';
 import { statusBar } from './statusBar';
@@ -10,9 +10,18 @@ import { playAPlaylist } from './commands/playAPlaylist';
 
 export async function activate(context: vscode.ExtensionContext) {
 	if (!fs.existsSync(context.globalStorageUri.fsPath)) {
-        fs.mkdirSync(context.globalStorageUri.fsPath);
-    }	
-	await player.start();
+		fs.mkdirSync(context.globalStorageUri.fsPath);
+	}
+	try {
+		await player.start();
+	} catch (error) {
+		console.log(error);
+		vscode.window.showErrorMessage("Failed to find MPV on your system!", {
+			modal: true,
+			detail: "Make sure MPV is installed and is on your PATH.",
+		});
+		return;
+	}
 	initDb(context)
 	searchMusic(context)
 	searchAndAddToPlaylist(context)
