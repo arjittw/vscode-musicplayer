@@ -52,9 +52,13 @@ export async function statusBar(context: vscode.ExtensionContext) {
     );
 }
 
-export async function updateState() {
-    togglePauseButton.tooltip = (await player.isPaused()) ? 'Play' : 'Pause';
-}
+player.on('started', () => {    
+    togglePauseButton.tooltip = 'Play';
+})
+
+player.on('paused', () => {
+    togglePauseButton.tooltip = 'Pause';
+})
 
 export async function playingState() {
     playPreviousButton.show()

@@ -1,4 +1,4 @@
-const mpv = require('node-mpv-km');
+let mpv = require('node-mpv');
 
 export const player = new mpv({
     audio_only: true,

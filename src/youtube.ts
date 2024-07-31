@@ -1,10 +1,12 @@
 import * as fs from 'fs';
 import * as vscode from 'vscode';
 // import * as yt from 'youtube-search-without-api-key';
-import ytdl = require('ytdl-core');
-import * as ytsr from 'ytsr';
+import ytdl = require('@distube/ytdl-core');
+const ytsr = require('ytsr');
 
 export async function downloadTrack(url: string, path: string) {
+    console.log(url, path);
+    
     const track = ytdl(url, {
         filter: 'audioonly',
         dlChunkSize: 250000,

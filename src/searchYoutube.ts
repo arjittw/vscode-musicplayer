@@ -1,4 +1,4 @@
-import { playingState, updateState } from './statusBar';
+import { playingState } from './statusBar';
 import * as vscode from 'vscode';
 import { downloadTrack, getDownloadPath, getSearchPick } from './youtube';
 import { player } from './player';
@@ -12,10 +12,10 @@ export async function searchYoutube(context: vscode.ExtensionContext) {
 
     const track = await downloadTrack(pick.data.url, downloadPath);
 
-    track.on('end', async () => {
-        await player.load(downloadPath);
-        await player.play();
+    track.on('end', () => {
+        console.log(downloadPath);
+        player.load(downloadPath);
+        player.play();
         playingState();
-        updateState();
     });
 }

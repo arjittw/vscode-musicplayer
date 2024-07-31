@@ -1,6 +1,5 @@
 import { player } from '../player';
 import * as vscode from 'vscode';
-import { updateState } from '../statusBar';
 import { addLastToNextAndPlay, addToNextAndPlay } from './playAPlaylist';
 
 export function controls(context: vscode.ExtensionContext) {
@@ -8,7 +7,6 @@ export function controls(context: vscode.ExtensionContext) {
         'musicplayer.togglePause',
         async () => {
             await player.togglePause();
-            updateState();
         }
     );
 
@@ -16,7 +14,6 @@ export function controls(context: vscode.ExtensionContext) {
         'musicplayer.seekForward',
         async () => {
             await player.seek(10);
-            updateState();
         }
     );
 
@@ -24,7 +21,6 @@ export function controls(context: vscode.ExtensionContext) {
         'musicplayer.seekBackword',
         async () => {
             await player.seek(-10);
-            updateState();
         }
     );
 

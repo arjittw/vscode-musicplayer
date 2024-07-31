@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { db } from '../db';
 import { player } from '../player';
-import { playingState, updateState } from '../statusBar';
+import { playingState } from '../statusBar';
 import { downloadTrack, getDownloadPath } from '../youtube';
 
 let playlist: any = [];
@@ -35,7 +35,6 @@ export async function downloadAndPlayNext() {
         await player.load(downloadPath);
         await player.play();
         playingState();
-        updateState();
     });
 
     player.once('stopped', () => {

@@ -9,12 +9,10 @@ import * as fs from "fs";
 import { playAPlaylist } from './commands/playAPlaylist';
 
 export async function activate(context: vscode.ExtensionContext) {
-	player.start()
-
 	if (!fs.existsSync(context.globalStorageUri.fsPath)) {
         fs.mkdirSync(context.globalStorageUri.fsPath);
     }	
-
+	await player.start();
 	initDb(context)
 	searchMusic(context)
 	searchAndAddToPlaylist(context)
