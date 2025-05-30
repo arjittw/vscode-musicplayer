@@ -34,3 +34,5 @@ brew install mpv
 ```
 
 # And you are ready to go
+
+#### Note: If it stops playing music after searching it, let me know it just means a dependency is outdated

@@ -3,7 +3,7 @@
   "displayName": "Music Player",
   "description": "The Full Featured Ad-Free Blazingly Fast Music/Media player and You'll never open a tab for music in browser",
   "publisher": "arjittw",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
@@ -87,8 +87,8 @@
     "@vscode/test-electron": "^2.4.0"
   },
   "dependencies": {
-    "@distube/ytdl-core": "^4.14.4",
-    "node-json-db": "^2.3.0",
+    "@distube/ytdl-core": "^4.16.10",
+    "node-json-db": "^2.3.1",
     "node-mpv": "2.0.0-beta.2",
     "ytsr": "^3.8.4"
   }

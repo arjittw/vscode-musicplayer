@@ -22,6 +22,10 @@ export async function activate(context: vscode.ExtensionContext) {
 		});
 		return;
 	}
+	if(context.globalState.get("version") != "1.0.7") {
+		context.globalState.update("version", "1.0.7");// updated now music will play again
+		vscode.window.showInformationMessage("Music Player extension updated to version 1.0.7! Updated dependencies, fixed music not starting to play. If this happens again please create an issue on the GitHub repository (this issue happens when a few dependencies are outdated).");
+	}
 	initDb(context)
 	searchMusic(context)
 	searchAndAddToPlaylist(context)
